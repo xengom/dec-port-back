@@ -1,4 +1,4 @@
-package com.decportback.web.dto;
+package com.decportback.kisApi.dto;
 
 public class KISCommonDto {
     // 성공 실패 여부
