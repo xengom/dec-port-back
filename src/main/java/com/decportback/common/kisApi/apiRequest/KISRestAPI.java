@@ -1,8 +1,8 @@
-package com.decportback.kisApi.apiRequest;
+package com.decportback.common.kisApi.apiRequest;
 
-import com.decportback.kisApi.dto.KISTokenRequestDto;
-import com.decportback.kisApi.dto.KISTokenResponseDto;
-import com.decportback.kisApi.dto.StockPriceMainDto;
+import com.decportback.common.kisApi.dto.KISTokenRequestDto;
+import com.decportback.common.kisApi.dto.KISTokenResponseDto;
+import com.decportback.common.kisApi.dto.StockPriceMainDto;
 import retrofit2.Call;
 import retrofit2.http.*;
 

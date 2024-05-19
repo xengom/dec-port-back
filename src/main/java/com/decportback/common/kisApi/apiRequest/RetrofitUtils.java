@@ -1,4 +1,4 @@
-package com.decportback.kisApi.apiRequest;
+package com.decportback.common.kisApi.apiRequest;
 
 import org.springframework.stereotype.Component;
 import retrofit2.Call;

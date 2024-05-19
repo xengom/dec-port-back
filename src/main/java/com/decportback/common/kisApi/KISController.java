@@ -1,8 +1,8 @@
-package com.decportback.kisApi;
+package com.decportback.common.kisApi;
 
-import com.decportback.kisApi.Service.KISMainService;
-import com.decportback.kisApi.dto.StockPriceMainDto;
-import com.decportback.kisApi.dto.StockPriceRequestDto;
+import com.decportback.common.kisApi.Service.KISMainService;
+import com.decportback.common.kisApi.dto.StockPriceMainDto;
+import com.decportback.common.kisApi.dto.StockPriceRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

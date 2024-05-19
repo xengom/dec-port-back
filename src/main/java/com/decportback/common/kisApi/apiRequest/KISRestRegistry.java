@@ -1,4 +1,4 @@
-package com.decportback.kisApi.apiRequest;
+package com.decportback.common.kisApi.apiRequest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

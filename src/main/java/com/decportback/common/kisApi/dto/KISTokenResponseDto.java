@@ -1,4 +1,4 @@
-package com.decportback.kisApi.dto;
+package com.decportback.common.kisApi.dto;
 
 import lombok.*;
 
