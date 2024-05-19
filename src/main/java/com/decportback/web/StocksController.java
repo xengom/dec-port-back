@@ -7,6 +7,8 @@ import com.decportback.web.dto.StockUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/stocks")
@@ -27,5 +29,10 @@ public class StocksController {
     @GetMapping("/{id}")
     public StockResponseDto findById (@PathVariable Long id) {
         return stocksService.findById(id);
+    }
+
+    @GetMapping("")
+    public List<StockResponseDto> findAll() {
+        return stocksService.findAll();
     }
 }
