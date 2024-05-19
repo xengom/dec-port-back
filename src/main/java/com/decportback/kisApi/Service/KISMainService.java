@@ -49,7 +49,6 @@ public class KISMainService {
      * @since 240518
      * @Description check token is valid
      */
-    @PostConstruct
     public void isTokenExpired() {
         // TODO LocalTest 걷어내기
         boolean isLocal = true;
@@ -74,8 +73,8 @@ public class KISMainService {
         // TODO LocalTest 걷어내기
         if (isLocalTest) {
             TOKEN_OBJECT = KISTokenResponseDto.builder()
-                    .access_token_token_expired("2024-05-18 23:56:27")
-                    .access_token("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6Ijk1NWRiZjE5LWJjYTAtNGViNi05Y2E0LTdlN2YwNDVkNDU1MyIsInByZHRfY2QiOiIiLCJpc3MiOiJ1bm9ndyIsImV4cCI6MTcxNjA0NDE4NywiaWF0IjoxNzE1OTU3Nzg3LCJqdGkiOiJQU2JNbHB4Mzl0YjdxRWJQeUxlY2FVZGVLek9KdHlXRElSalkifQ.qfuKQquVTKN05cgZxEu9b__fzAbRM_b7KBA6611dF9VlZS8gLJ2cYMlckN16A_tpd41t_de__vtvwVceu9gGhA")
+                    .access_token_token_expired("2024-05-20 21:15:36")
+                    .access_token("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6Ijk3ZDZkOWQxLTE5ZmMtNDFiZC05OTM4LTkzOTVjNTk1MGFkMCIsInByZHRfY2QiOiIiLCJpc3MiOiJ1bm9ndyIsImV4cCI6MTcxNjIwNzMzNiwiaWF0IjoxNzE2MTIwOTM2LCJqdGkiOiJQU2JNbHB4Mzl0YjdxRWJQeUxlY2FVZGVLek9KdHlXRElSalkifQ.YvzVq5H_OoW-gEV3Qkvg7czYLvNjy6GIubbRaJO2-c-cvSPvnZnWchw1ezO47PLDdEH82JbeuUujuJYiIO_oBw")
                     .token_type("Bearer")
                     .expires_in(86400)
                     .build();
@@ -95,6 +94,7 @@ public class KISMainService {
      * @Description get stock price from KIS
      */
     public StockPriceMainDto getStockPrice(String countryCode, String exchangeMarket, String ticker) {
+        isTokenExpired();
         return countryCode.equals("KR") ?
         krStockInfo.getStockInfo(TOKEN_OBJECT, appkey, appsecret, "", ticker) :
                 usStockInfo.getStockInfo(TOKEN_OBJECT, appkey, appsecret, exchangeMarket, ticker);
