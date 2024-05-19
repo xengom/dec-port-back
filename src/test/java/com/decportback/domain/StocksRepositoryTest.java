@@ -39,7 +39,7 @@ public class StocksRepositoryTest {
         List<Stocks> stocksList = stocksRepository.findAll();
 
         // then
-        Stocks stocks = stocksList.get(0);
+        Stocks stocks = stocksList.getFirst();
         assertEquals(stockName,stocks.getStockName());
     }
     
