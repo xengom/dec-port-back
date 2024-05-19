@@ -5,7 +5,6 @@ import lombok.Getter;
 
 @Getter
 public class StockResponseDto {
-    private Long id;
     private String equityAccount;
     private String countryCode;
     private String exchangeMarket;
@@ -15,7 +14,6 @@ public class StockResponseDto {
     private Double averagePrice;
 
     public StockResponseDto(Stocks entity) {
-        this.id = entity.getId();
         this.equityAccount = entity.getEquityAccount();
         this.countryCode = entity.getCountryCode();
         this.exchangeMarket = entity.getExchangeMarket();

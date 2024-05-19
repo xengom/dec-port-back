@@ -12,8 +12,7 @@ import lombok.NoArgsConstructor;
 public class Stocks extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String ticker;
 
     @Column(name = "equity_account", length = 20, nullable = false)
     private String equityAccount;
@@ -23,9 +22,6 @@ public class Stocks extends BaseTimeEntity {
 
     @Column(name = "exchange_market", length = 3)
     private String exchangeMarket;
-
-    @Column(length = 10, nullable = false)
-    private String ticker;
 
     @Column(name = "stock_name", nullable = false)
     private String stockName;

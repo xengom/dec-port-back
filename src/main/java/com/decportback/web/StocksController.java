@@ -17,18 +17,18 @@ public class StocksController {
     private final StocksService stocksService;
 
     @PostMapping("")
-    public Long insertStock(@RequestBody StockSaveRequestDto dto) {
+    public String insertStock(@RequestBody StockSaveRequestDto dto) {
         return stocksService.save(dto);
     }
 
-    @PutMapping("/{id}")
-    public Long update(@PathVariable Long id, @RequestBody StockUpdateRequestDto dto) {
-        return stocksService.update(id, dto);
+    @PutMapping("/{ticker}")
+    public String update(@PathVariable String ticker, @RequestBody StockUpdateRequestDto dto) {
+        return stocksService.update(ticker, dto);
     }
 
-    @GetMapping("/{id}")
-    public StockResponseDto findById (@PathVariable Long id) {
-        return stocksService.findById(id);
+    @GetMapping("/{ticker}")
+    public StockResponseDto findById (@PathVariable String ticker) {
+        return stocksService.findById(ticker);
     }
 
     @GetMapping("")

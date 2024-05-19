@@ -20,21 +20,21 @@ public class StocksService {
     private final StocksRepository stocksRepository;
 
     @Transactional
-    public Long save(StockSaveRequestDto dto) {
-        return stocksRepository.save(dto.toEntity()).getId();
+    public String save(StockSaveRequestDto dto) {
+        return stocksRepository.save(dto.toEntity()).getTicker();
     }
 
     @Transactional
-    public Long update(Long id, StockUpdateRequestDto dto) {
-        Stocks stocks = stocksRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Entity does not exist. id = " + id));
+    public String update(String ticker, StockUpdateRequestDto dto) {
+        Stocks stocks = stocksRepository.findById(ticker)
+                .orElseThrow(() -> new IllegalArgumentException("Entity does not exist. ticker = " + ticker));
         stocks.update(dto.getAmount(), dto.getAveragePrice());
-        return id;
+        return ticker;
     }
 
-    public StockResponseDto findById(Long id) {
-        Stocks entity = stocksRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Entity does not exist. id = " + id));
+    public StockResponseDto findById(String ticker) {
+        Stocks entity = stocksRepository.findById(ticker)
+                .orElseThrow(() -> new IllegalArgumentException("Entity does not exist. ticker = " + ticker));
         return new StockResponseDto(entity);
     }
 
@@ -42,7 +42,7 @@ public class StocksService {
     public List<StockResponseDto> findAll() {
         return stocksRepository.findAll().stream()
                 .map(StockResponseDto::new)
-                .sorted(Comparator.comparing(StockResponseDto::getId))
+                .sorted(Comparator.comparing(StockResponseDto::getTicker))
                 .collect(Collectors.toList());
     }
 }

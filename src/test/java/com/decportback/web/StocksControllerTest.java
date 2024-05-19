@@ -53,11 +53,11 @@ public class StocksControllerTest {
         String url = "http://localhost:" + port + "/api/v1/stocks";
 
         // when
-        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, requestDto, String.class);
 
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+        assertThat(responseEntity.getBody()).isEqualTo(requestDto.getTicker());
         List<Stocks> all = stocksRepository.findAll();
         assertThat(all.getFirst().getTicker()).isEqualTo(ticker);
         assertThat(all.getFirst().getStockName()).isEqualTo(stockName);
@@ -75,7 +75,7 @@ public class StocksControllerTest {
                 .ticker(ticker)
                 .exchangeMarket(exchangeMarket).build());
 
-        Long updatedStockId = savedStock.getId();
+        String updatedStockTicker = savedStock.getTicker();
         Integer expectedStockAmount = 1;
         Double expectedStockAveragePrice = 999.99;
 
@@ -83,16 +83,16 @@ public class StocksControllerTest {
                 .amount(expectedStockAmount)
                 .averagePrice(expectedStockAveragePrice).build();
 
-        String url = "http://localhost:" + port + "/api/v1/stocks/" + updatedStockId;
+        String url = "http://localhost:" + port + "/api/v1/stocks/" + updatedStockTicker;
 
         HttpEntity<StockUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
         // when
-        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
+        ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
 
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+        assertThat(responseEntity.getBody()).isEqualTo(updatedStockTicker);
         List<Stocks> all = stocksRepository.findAll();
         assertThat(all.getFirst().getAmount()).isEqualTo(expectedStockAmount);
         assertThat(all.getFirst().getAveragePrice()).isEqualTo(expectedStockAveragePrice);
