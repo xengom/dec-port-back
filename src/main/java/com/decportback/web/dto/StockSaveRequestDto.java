@@ -1,6 +1,6 @@
 package com.decportback.web.dto;
 
-import com.decportback.domain.Stocks;
+import com.decportback.domain.stocks.Stocks;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StockSaveRequestDto {
 
-    String equityAccount;
-    String countryCode;
-    String exchangeMarket;
-    String ticker;
-    String stockName;
-    Integer amount;
-    Double averagePrice;
+    private String equityAccount;
+    private String countryCode;
+    private String exchangeMarket;
+    private String ticker;
+    private String stockName;
+    private Integer amount;
+    private Double averagePrice;
 
     @Builder
     public StockSaveRequestDto(String equityAccount,

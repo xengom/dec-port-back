@@ -1,5 +1,6 @@
-package com.decportback.domain;
+package com.decportback.domain.stocks;
 
+import com.decportback.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Stocks {
+public class Stocks extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,4 +51,8 @@ public class Stocks {
         this.averagePrice = averagePrice;
     }
 
+    public void update(Integer amount, Double averagePrice) {
+        this.amount = amount;
+        this.averagePrice = averagePrice;
+    }
 }
